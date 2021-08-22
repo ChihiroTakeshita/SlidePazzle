@@ -17,12 +17,25 @@ public class CreateBlocks : MonoBehaviour
     {
         for(int i = 0; i < width; i++)
         {
-            for(int j = 0; j < height; j++)
+            if(i < width - 1)
             {
-                int r = Random.Range(0, 4);
-                var block = Instantiate(blocks[r]);
-                block.transform.position = new Vector3(blockSize * i, blockSize * j);
-                blockArray[i, j] = block;
+                for (int j = 0; j < height; j++)
+                {
+                    int r = Random.Range(0, 4);
+                    var block = Instantiate(blocks[r]);
+                    block.transform.position = new Vector3(blockSize * i, blockSize * j);
+                    blockArray[i, j] = block;
+                }
+            }
+            else
+            {
+                for (int j = 0; j < height - 1; j++)
+                {
+                    int r = Random.Range(0, 4);
+                    var block = Instantiate(blocks[r]);
+                    block.transform.position = new Vector3(blockSize * i, blockSize * j);
+                    blockArray[i, j] = block;
+                }
             }
         }
     }
