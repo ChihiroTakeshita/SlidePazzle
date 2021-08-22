@@ -9,6 +9,8 @@ public class MoveBlocks : MonoBehaviour
     Vector3 offsetRight = new Vector3(0.65f, 0);
     Vector3 offsetLeft = new Vector3(-0.65f, 0);
 
+    public bool isMatching = false;
+
     private void OnMouseDown()
     {
         RaycastHit2D hitUp = Physics2D.Raycast(transform.position + offsetUp, Vector2.up, 0.3f);
