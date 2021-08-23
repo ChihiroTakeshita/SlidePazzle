@@ -7,7 +7,9 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] float maxTime;
     [SerializeField] GameObject gameManager;
+    [SerializeField] GameObject text;
     GameManager gManager;
+    Text timeUp;
     public float currentTime;
 
     Slider timer;
@@ -16,6 +18,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         gManager = gameManager.GetComponent<GameManager>();
+        timeUp = text.GetComponent<Text>();
         currentTime = maxTime;
         timer = GetComponent<Slider>();
         timer.maxValue = maxTime;
@@ -32,6 +35,7 @@ public class Timer : MonoBehaviour
 
             if(currentTime < 0)
             {
+                timeUp.text = "TIME UP!";
                 gManager.FreezeBlocks();
                 break;
             }

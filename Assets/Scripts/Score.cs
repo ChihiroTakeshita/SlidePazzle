@@ -12,7 +12,7 @@ public class Score : MonoBehaviour
     private void Start()
     {
         scoreText = GetComponent<Text>();
-        scoreText.text = 0.ToString();
+        scoreText.text = "Score:00000";
     }
 
     public int AddScore(int interval, int currentScore)
@@ -40,6 +40,25 @@ public class Score : MonoBehaviour
 
     public void ShowScore(int currentScore)
     {
-        scoreText.text = currentScore.ToString();
+        if(currentScore < 10)
+        {
+            scoreText.text = "Score:0000" + currentScore.ToString();
+        }
+        else if(currentScore < 100)
+        {
+            scoreText.text = "Score:000" + currentScore.ToString();
+        }
+        else if(currentScore < 1000)
+        {
+            scoreText.text = "Score:00" + currentScore.ToString();
+        }
+        else if(currentScore < 10000)
+        {
+            scoreText.text = "Score:0" + currentScore.ToString();
+        }
+        else
+        {
+            scoreText.text = "Score:" + currentScore.ToString();
+        }
     }
 }

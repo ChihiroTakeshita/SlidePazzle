@@ -64,8 +64,6 @@ public class GameManager : MonoBehaviour
             item.GetComponent<MoveBlocks>().cantMove = false;
         }
 
-        Debug.Log("Green : false");
-
         foreach (var item in blueBlocks)
         {
             item.GetComponent<MoveBlocks>().cantMove = false;

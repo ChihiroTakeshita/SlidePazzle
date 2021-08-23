@@ -97,7 +97,6 @@ public class DeleteBlocks : MonoBehaviour
         {
             isMoved = true;
             gameManager.MoveAgainBlocks();
-            Debug.Log("Game Start");
         }
     }
 
