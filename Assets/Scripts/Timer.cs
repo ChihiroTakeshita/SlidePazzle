@@ -41,7 +41,7 @@ public class Timer : MonoBehaviour
             {
                 timeUp.text = "TIME UP!";
                 gManager.FreezeBlocks();
-                Invoke("ToResult", 0.5f);
+                //Invoke("ToResult", 0.5f);
                 break;
             }
 

@@ -9,6 +9,7 @@ TagManager:
   - Yerrow
   - Green
   - SceneManager
+  - SoundManager
   layers:
   - Default
   - TransparentFX

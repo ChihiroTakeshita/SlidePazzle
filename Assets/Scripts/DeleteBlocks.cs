@@ -10,6 +10,8 @@ public class DeleteBlocks : MonoBehaviour
     Score score;
     GameObject manager;
     GameManager gameManager;
+    GameObject sound;
+    SoundManager se;
 
     int width = 5;
     int height = 5;
@@ -25,10 +27,12 @@ public class DeleteBlocks : MonoBehaviour
         blockCreator = GameObject.Find("BlockCreator");
         scoreText = GameObject.Find("Score");
         manager = GameObject.Find("GameManager");
+        sound = GameObject.FindGameObjectWithTag("SoundManager");
         create = blockCreator.GetComponent<SetGame>();
         score = scoreText.GetComponent<Score>();
         gameManager = manager.GetComponent<GameManager>();
         deleteList = new List<GameObject>();
+        se = sound.GetComponent<SoundManager>();
     }
 
     public void CheckMatching()
@@ -82,6 +86,7 @@ public class DeleteBlocks : MonoBehaviour
         {
             if (isMoved)
             {
+                se.DeleteSE();
                 gameManager.currentScore = score.AddScore(gameManager.interval, gameManager.currentScore);
                 score.ShowScore(gameManager.currentScore);
                 gameManager.interval = 0;
