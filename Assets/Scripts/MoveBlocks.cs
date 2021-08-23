@@ -14,6 +14,8 @@ public class MoveBlocks : MonoBehaviour
     DeleteBlocks deleteBlocks;
     GameObject manager;
     GameManager gameManager;
+    AudioSource audioSource;
+    [SerializeField] AudioClip clip;
 
     public bool isMatching = false;
 
@@ -28,6 +30,7 @@ public class MoveBlocks : MonoBehaviour
         gameManager = manager.GetComponent<GameManager>();
         create = blockCreator.GetComponent<SetGame>();
         deleteBlocks = GetComponent<DeleteBlocks>();
+        audioSource = GetComponent<AudioSource>();
 
         coodinate = new int[] {(int)(transform.position.x / create.blockSize), (int)(transform.position.y / create.blockSize)};
     }
@@ -48,6 +51,7 @@ public class MoveBlocks : MonoBehaviour
                 coodinate[0] = x;
                 coodinate[1] = y + 1;
                 transform.position += new Vector3(0, 1.28f);
+                audioSource.PlayOneShot(clip);
             }
 
             RaycastHit2D hitDown = Physics2D.Raycast(transform.position + offsetDown, Vector2.down, 0.3f);
@@ -60,6 +64,7 @@ public class MoveBlocks : MonoBehaviour
                 coodinate[0] = x;
                 coodinate[1] = y - 1;
                 transform.position += new Vector3(0, -1.28f);
+                audioSource.PlayOneShot(clip);
             }
 
             RaycastHit2D hitRight = Physics2D.Raycast(transform.position + offsetRight, Vector2.right, 0.3f);
@@ -72,6 +77,7 @@ public class MoveBlocks : MonoBehaviour
                 coodinate[0] = x + 1;
                 coodinate[1] = y;
                 transform.position += new Vector3(1.28f, 0);
+                audioSource.PlayOneShot(clip);
             }
 
             RaycastHit2D hitLeft = Physics2D.Raycast(transform.position + offsetLeft, Vector2.left, 0.3f);
@@ -84,6 +90,7 @@ public class MoveBlocks : MonoBehaviour
                 coodinate[0] = x - 1;
                 coodinate[1] = y;
                 transform.position += new Vector3(-1.28f, 0);
+                audioSource.PlayOneShot(clip);
             }
 
             deleteBlocks.CheckMatching();

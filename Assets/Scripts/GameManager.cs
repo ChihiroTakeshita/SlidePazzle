@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject sceneManager;
+    GameObject sceneManager;
     GameObject[] redBlocks;
     GameObject[] greenBlocks;
     GameObject[] blueBlocks;
     GameObject[] yerrowBlocks;
-    SceneManager scene;
+    SceneChange scene;
     public int interval = 10;
     public int currentScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        scene = sceneManager.GetComponent<SceneManager>();
+        sceneManager = GameObject.FindGameObjectWithTag("SceneManager");
+        scene = sceneManager.GetComponent<SceneChange>();
     }
 
     public void FreezeBlocks()

@@ -8,6 +8,7 @@ TagManager:
   - Red
   - Yerrow
   - Green
+  - SceneManager
   layers:
   - Default
   - TransparentFX

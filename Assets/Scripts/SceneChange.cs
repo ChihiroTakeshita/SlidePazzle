@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManager : MonoBehaviour
+public class SceneChange : MonoBehaviour
 {
     private void Start()
     {
@@ -12,16 +12,16 @@ public class SceneManager : MonoBehaviour
 
     public void LoadGame()
     {
-        
+        SceneManager.LoadScene("Game");
     }
 
     public void LoadResult()
     {
-
+        SceneManager.LoadScene("Result");
     }
 
     public void LoadTitle()
     {
-
+        SceneManager.LoadScene("Title");
     }
 }

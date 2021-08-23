@@ -9,6 +9,8 @@ public class Timer : MonoBehaviour
     [SerializeField] GameObject gameManager;
     [SerializeField] GameObject text;
     GameManager gManager;
+    GameObject scenemanager;
+    SceneChange manager;
     Text timeUp;
     public float currentTime;
 
@@ -17,6 +19,8 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scenemanager = GameObject.FindGameObjectWithTag("SceneManager");
+        manager = scenemanager.GetComponent<SceneChange>();
         gManager = gameManager.GetComponent<GameManager>();
         timeUp = text.GetComponent<Text>();
         currentTime = maxTime;
@@ -37,10 +41,16 @@ public class Timer : MonoBehaviour
             {
                 timeUp.text = "TIME UP!";
                 gManager.FreezeBlocks();
+                Invoke("ToResult", 0.5f);
                 break;
             }
 
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    void ToResult()
+    {
+        manager.LoadResult();
     }
 }
