@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour
 
             if(currentTime < 0)
             {
-                gManager.TimeUp();
+                gManager.FreezeBlocks();
                 break;
             }
 

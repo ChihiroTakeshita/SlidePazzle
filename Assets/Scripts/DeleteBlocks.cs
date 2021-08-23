@@ -33,6 +33,8 @@ public class DeleteBlocks : MonoBehaviour
 
     public void CheckMatching()
     {
+        gameManager.FreezeBlocks();
+
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height - 2; j++)
@@ -94,6 +96,7 @@ public class DeleteBlocks : MonoBehaviour
         else
         {
             isMoved = true;
+            gameManager.MoveAgainBlocks();
             Debug.Log("Game Start");
         }
     }

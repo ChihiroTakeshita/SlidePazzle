@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         scene = sceneManager.GetComponent<SceneManager>();
     }
 
-    public void TimeUp()
+    public void FreezeBlocks()
     {
         redBlocks = GameObject.FindGameObjectsWithTag("Red");
         greenBlocks = GameObject.FindGameObjectsWithTag("Green");
@@ -28,30 +28,52 @@ public class GameManager : MonoBehaviour
 
         foreach (var item in redBlocks)
         {
-            item.GetComponent<MoveBlocks>().timeUp = true;
+            item.GetComponent<MoveBlocks>().cantMove = true;
         }
-
-        Debug.Log("Red : false");
 
         foreach (var item in greenBlocks)
         {
-            item.GetComponent<MoveBlocks>().timeUp = true;
+            item.GetComponent<MoveBlocks>().cantMove = true;
+        }
+
+        foreach (var item in blueBlocks)
+        {
+            item.GetComponent<MoveBlocks>().cantMove = true;
+        }
+
+        foreach (var item in yerrowBlocks)
+        {
+            item.GetComponent<MoveBlocks>().cantMove = true;
+        }
+    }
+
+    public void MoveAgainBlocks()
+    {
+        redBlocks = GameObject.FindGameObjectsWithTag("Red");
+        greenBlocks = GameObject.FindGameObjectsWithTag("Green");
+        blueBlocks = GameObject.FindGameObjectsWithTag("Blue");
+        yerrowBlocks = GameObject.FindGameObjectsWithTag("Yerrow");
+
+        foreach (var item in redBlocks)
+        {
+            item.GetComponent<MoveBlocks>().cantMove = false;
+        }
+
+        foreach (var item in greenBlocks)
+        {
+            item.GetComponent<MoveBlocks>().cantMove = false;
         }
 
         Debug.Log("Green : false");
 
         foreach (var item in blueBlocks)
         {
-            item.GetComponent<MoveBlocks>().timeUp = true;
+            item.GetComponent<MoveBlocks>().cantMove = false;
         }
-
-        Debug.Log("Blue : false");
 
         foreach (var item in yerrowBlocks)
         {
-            item.GetComponent<MoveBlocks>().timeUp = true;
+            item.GetComponent<MoveBlocks>().cantMove = false;
         }
-
-        Debug.Log("Yerrow : false");
     }
 }

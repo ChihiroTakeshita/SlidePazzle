@@ -17,7 +17,7 @@ public class MoveBlocks : MonoBehaviour
 
     public bool isMatching = false;
 
-    public bool timeUp = false;
+    public bool cantMove = false;
 
     public int[] coodinate;
 
@@ -34,7 +34,7 @@ public class MoveBlocks : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!timeUp)
+        if (!cantMove)
         {
             gameManager.interval += 1;
 
