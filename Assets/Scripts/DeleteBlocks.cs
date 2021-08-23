@@ -1,0 +1,92 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DeleteBlocks : MonoBehaviour
+{
+    GameObject blockCreator;
+    SetGame create;
+
+    int width = 5;
+    int height = 5;
+
+    private List<GameObject> deleteList;
+
+    private void Start()
+    {
+        blockCreator = GameObject.Find("BlockCreator");
+        create = blockCreator.GetComponent<SetGame>();
+        deleteList = new List<GameObject>();
+    }
+
+    public void CheckMatching()
+    {
+        for (int i = 0; i < width; i++)
+        {
+            for (int j = 0; j < height - 2; j++)
+            {
+                if (create.blockArray[i, j] != null && create.blockArray[i, j + 1] != null && create.blockArray[i, j + 2] != null)
+                {
+                    if (create.blockArray[i, j].tag == create.blockArray[i, j + 1].tag && create.blockArray[i, j].tag == create.blockArray[i, j + 2].tag)
+                    {
+                        create.blockArray[i, j].GetComponent<MoveBlocks>().isMatching = true;
+                        create.blockArray[i, j + 1].GetComponent<MoveBlocks>().isMatching = true;
+                        create.blockArray[i, j + 2].GetComponent<MoveBlocks>().isMatching = true;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width - 2; j++)
+            {
+                if (create.blockArray[j, i] != null && create.blockArray[j + 1, i] != null && create.blockArray[j + 2, i] != null)
+                {
+                    if (create.blockArray[j, i].tag == create.blockArray[j + 1, i].tag && create.blockArray[j, i].tag == create.blockArray[j + 2, i].tag)
+                    {
+                        create.blockArray[j, i].GetComponent<MoveBlocks>().isMatching = true;
+                        create.blockArray[j + 1, i].GetComponent<MoveBlocks>().isMatching = true;
+                        create.blockArray[j + 2, i].GetComponent<MoveBlocks>().isMatching = true;
+                    }
+                }
+            }
+        }
+
+        foreach (var item in create.blockArray)
+        {
+            if (item != null)
+            {
+                if (item.GetComponent<MoveBlocks>().isMatching)
+                {
+                    deleteList.Add(item);
+                }
+            }
+        }
+
+        if (deleteList.Count > 0)
+        {
+            Delete();
+        }
+        else
+        {
+            Debug.Log("Game Start");
+        }
+    }
+
+    private void Delete()
+    {
+        foreach (var item in deleteList)
+        {
+            create.blockArray[(int)(item.transform.position.x / create.blockSize), (int)(item.transform.position.y / create.blockSize)] = null;
+            Destroy(item);
+            create.nextX = (int)(item.transform.position.x / create.blockSize);
+            create.nextY = (int)(item.transform.position.y / create.blockSize);
+
+            create.SpawnNewBlock();
+        }
+
+        deleteList.Clear();
+        CheckMatching();
+    }
+}

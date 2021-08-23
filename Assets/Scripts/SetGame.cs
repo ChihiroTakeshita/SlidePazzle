@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateBlocks : MonoBehaviour
+public class SetGame : MonoBehaviour
 {
     [SerializeField] GameObject[] blocks;
 
     int width = 5;
     int height = 5;
-    float blockSize = 1.28f;
+    public float blockSize = 1.28f;
 
     public GameObject[,] blockArray = new GameObject[5, 5];
 
     private List<GameObject> deleteList;
 
-    int nextX;
-    int nextY;
+    public int nextX;
+    public int nextY;
 
     // Start is called before the first frame update
     void Start()
@@ -100,7 +100,7 @@ public class CreateBlocks : MonoBehaviour
 
         if(deleteList.Count > 0)
         {
-            Delete();
+            DeleteBeforeStart();
         }
         else
         {
@@ -108,7 +108,7 @@ public class CreateBlocks : MonoBehaviour
         }
     }
 
-    private void Delete()
+    private void DeleteBeforeStart()
     {
         foreach (var item in deleteList)
         {
@@ -124,7 +124,7 @@ public class CreateBlocks : MonoBehaviour
         CheckMatchingSet();
     }
 
-    private void SpawnNewBlock()
+    public void SpawnNewBlock()
     {
         int r = Random.Range(0, 4);
         var block = Instantiate(blocks[r]);

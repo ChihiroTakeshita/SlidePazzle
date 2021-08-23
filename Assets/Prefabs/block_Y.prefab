@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2218499851667075095}
   - component: {fileID: 2218499851667075094}
   - component: {fileID: 667052618466938105}
+  - component: {fileID: 1946297034468294559}
   m_Layer: 0
   m_Name: block_Y
   m_TagString: Yerrow
@@ -119,5 +120,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 719c9970f5ebd914995ceb86be69ce43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMatching: 0
+  coodinate: 
+--- !u!114 &1946297034468294559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2218499851667075089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782d759450431e6478dec5bb9621a8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

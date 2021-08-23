@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 549524821}
   - component: {fileID: 549524820}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BlockCreator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,14 +261,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 549524819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64ee4dc12ec69684c9d2ccecd75b2e19, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ff25887d93de7f459faa665a938b85c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   blocks:
-  - {fileID: 1454444347756873816, guid: 14347e3d528a7b4438415cb96c441e3c, type: 3}
-  - {fileID: 4533928941022037101, guid: 8a49633f19f223a49b75f19014843542, type: 3}
   - {fileID: 4152400138258905500, guid: d7300fda63b034e439443d00e5909151, type: 3}
+  - {fileID: 4533928941022037101, guid: 8a49633f19f223a49b75f19014843542, type: 3}
+  - {fileID: 1454444347756873816, guid: 14347e3d528a7b4438415cb96c441e3c, type: 3}
   - {fileID: 2218499851667075089, guid: 4f85ef6365bdd7947a3a2fe7c44fa374, type: 3}
+  blockSize: 1.28
+  nextX: 0
+  nextY: 0
 --- !u!4 &549524821
 Transform:
   m_ObjectHideFlags: 0
