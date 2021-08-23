@@ -6,16 +6,28 @@ public class DeleteBlocks : MonoBehaviour
 {
     GameObject blockCreator;
     SetGame create;
+    GameObject scoreText;
+    Score score;
+    GameObject manager;
+    GameManager gameManager;
 
     int width = 5;
     int height = 5;
 
     private List<GameObject> deleteList;
 
+    private bool isMoved = true;
+
+    int currentScore;
+
     private void Start()
     {
         blockCreator = GameObject.Find("BlockCreator");
+        scoreText = GameObject.Find("Score");
+        manager = GameObject.Find("GameManager");
         create = blockCreator.GetComponent<SetGame>();
+        score = scoreText.GetComponent<Score>();
+        gameManager = manager.GetComponent<GameManager>();
         deleteList = new List<GameObject>();
     }
 
@@ -66,10 +78,19 @@ public class DeleteBlocks : MonoBehaviour
 
         if (deleteList.Count > 0)
         {
+            if (isMoved)
+            {
+                currentScore = score.AddScore(gameManager.interval, gameManager.currentScore);
+                score.ShowScore(currentScore);
+                gameManager.currentScore = currentScore;
+                gameManager.interval = 0;
+                isMoved = false;
+            }
             Delete();
         }
         else
         {
+            isMoved = true;
             Debug.Log("Game Start");
         }
     }

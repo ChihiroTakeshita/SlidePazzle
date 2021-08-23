@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreUI : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
+    public int interval = 10;
+    public int currentScore;
+
     // Start is called before the first frame update
     void Start()
     {

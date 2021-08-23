@@ -12,6 +12,8 @@ public class MoveBlocks : MonoBehaviour
     GameObject blockCreator;
     SetGame create;
     DeleteBlocks deleteBlocks;
+    GameObject manager;
+    GameManager gameManager;
 
     public bool isMatching = false;
 
@@ -20,6 +22,8 @@ public class MoveBlocks : MonoBehaviour
     private void Start()
     {
         blockCreator = GameObject.Find("BlockCreator");
+        manager = GameObject.Find("GameManager");
+        gameManager = manager.GetComponent<GameManager>();
         create = blockCreator.GetComponent<SetGame>();
         deleteBlocks = GetComponent<DeleteBlocks>();
 
@@ -28,6 +32,8 @@ public class MoveBlocks : MonoBehaviour
 
     private void OnMouseDown()
     {
+        gameManager.interval += 1;
+
         RaycastHit2D hitUp = Physics2D.Raycast(transform.position + offsetUp, Vector2.up, 0.3f);
         if (!hitUp)
         {

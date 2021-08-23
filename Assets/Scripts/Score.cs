@@ -12,32 +12,33 @@ public class Score : MonoBehaviour
     private void Start()
     {
         scoreText = GetComponent<Text>();
+        scoreText.text = 0.ToString();
     }
 
-    public float AddScore(int interval)
+    public int AddScore(int interval, int currentScore)
     {
-        float score;
+        float add;
 
         switch(interval)
         {
-            case 0:
-                score = defaultScore * 2;
-                break;
             case 1:
-                score = defaultScore * 1.7f;
+                add = defaultScore * 2;
                 break;
             case 2:
-                score = defaultScore * 1.3f;
+                add = defaultScore * 1.7f;
+                break;
+            case 3:
+                add = defaultScore * 1.3f;
                 break;
             default:
-                score = defaultScore;
+                add = defaultScore;
                 break;
         }
 
-        return score;
+        return (int)add + currentScore;
     }
 
-    void ShowScore(float currentScore)
+    public void ShowScore(int currentScore)
     {
         scoreText.text = currentScore.ToString();
     }
