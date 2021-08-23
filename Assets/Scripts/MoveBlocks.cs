@@ -17,6 +17,8 @@ public class MoveBlocks : MonoBehaviour
 
     public bool isMatching = false;
 
+    public bool timeUp = false;
+
     public int[] coodinate;
 
     private void Start()
@@ -32,56 +34,59 @@ public class MoveBlocks : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameManager.interval += 1;
-
-        RaycastHit2D hitUp = Physics2D.Raycast(transform.position + offsetUp, Vector2.up, 0.3f);
-        if (!hitUp)
+        if (!timeUp)
         {
-            var x = (int)(transform.position.x/create.blockSize);
-            var y = (int)(transform.position.y/create.blockSize);
-            create.blockArray[x, y + 1] = this.gameObject;
-            create.blockArray[x, y] = null;
-            coodinate[0] = x;
-            coodinate[1] = y+1;
-            transform.position += new Vector3(0, 1.28f);
-        }
+            gameManager.interval += 1;
 
-        RaycastHit2D hitDown = Physics2D.Raycast(transform.position + offsetDown, Vector2.down, 0.3f);
-        if (!hitDown)
-        {
-            var x = (int)(transform.position.x / create.blockSize);
-            var y = (int)(transform.position.y / create.blockSize);
-            create.blockArray[x, y - 1] = this.gameObject;
-            create.blockArray[x, y] = null;
-            coodinate[0] = x;
-            coodinate[1] = y-1;
-            transform.position += new Vector3(0, -1.28f);
-        }
+            RaycastHit2D hitUp = Physics2D.Raycast(transform.position + offsetUp, Vector2.up, 0.3f);
+            if (!hitUp)
+            {
+                var x = (int)(transform.position.x / create.blockSize);
+                var y = (int)(transform.position.y / create.blockSize);
+                create.blockArray[x, y + 1] = this.gameObject;
+                create.blockArray[x, y] = null;
+                coodinate[0] = x;
+                coodinate[1] = y + 1;
+                transform.position += new Vector3(0, 1.28f);
+            }
 
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + offsetRight, Vector2.right, 0.3f);
-        if (!hitRight)
-        {
-            var x = (int)(transform.position.x / create.blockSize);
-            var y = (int)(transform.position.y / create.blockSize);
-            create.blockArray[x + 1, y] = this.gameObject;
-            create.blockArray[x, y] = null;
-            coodinate[0] = x+1;
-            coodinate[1] = y;
-            transform.position += new Vector3(1.28f, 0);
-        }
+            RaycastHit2D hitDown = Physics2D.Raycast(transform.position + offsetDown, Vector2.down, 0.3f);
+            if (!hitDown)
+            {
+                var x = (int)(transform.position.x / create.blockSize);
+                var y = (int)(transform.position.y / create.blockSize);
+                create.blockArray[x, y - 1] = this.gameObject;
+                create.blockArray[x, y] = null;
+                coodinate[0] = x;
+                coodinate[1] = y - 1;
+                transform.position += new Vector3(0, -1.28f);
+            }
 
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position + offsetLeft, Vector2.left, 0.3f);
-        if (!hitLeft)
-        {
-            var x = (int)(transform.position.x / create.blockSize);
-            var y = (int)(transform.position.y / create.blockSize);
-            create.blockArray[x - 1, y] = this.gameObject;
-            create.blockArray[x, y] = null;
-            coodinate[0] = x-1;
-            coodinate[1] = y;
-            transform.position += new Vector3(-1.28f, 0);
-        }
+            RaycastHit2D hitRight = Physics2D.Raycast(transform.position + offsetRight, Vector2.right, 0.3f);
+            if (!hitRight)
+            {
+                var x = (int)(transform.position.x / create.blockSize);
+                var y = (int)(transform.position.y / create.blockSize);
+                create.blockArray[x + 1, y] = this.gameObject;
+                create.blockArray[x, y] = null;
+                coodinate[0] = x + 1;
+                coodinate[1] = y;
+                transform.position += new Vector3(1.28f, 0);
+            }
 
-        deleteBlocks.CheckMatching();
+            RaycastHit2D hitLeft = Physics2D.Raycast(transform.position + offsetLeft, Vector2.left, 0.3f);
+            if (!hitLeft)
+            {
+                var x = (int)(transform.position.x / create.blockSize);
+                var y = (int)(transform.position.y / create.blockSize);
+                create.blockArray[x - 1, y] = this.gameObject;
+                create.blockArray[x, y] = null;
+                coodinate[0] = x - 1;
+                coodinate[1] = y;
+                transform.position += new Vector3(-1.28f, 0);
+            }
+
+            deleteBlocks.CheckMatching();
+        }
     }
 }

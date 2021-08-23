@@ -80,13 +80,16 @@ public class DeleteBlocks : MonoBehaviour
         {
             if (isMoved)
             {
-                currentScore = score.AddScore(gameManager.interval, gameManager.currentScore);
-                score.ShowScore(currentScore);
-                gameManager.currentScore = currentScore;
+                gameManager.currentScore = score.AddScore(gameManager.interval, gameManager.currentScore);
+                score.ShowScore(gameManager.currentScore);
                 gameManager.interval = 0;
                 isMoved = false;
+                Invoke("Delete", 0.3f);
             }
-            Delete();
+            else
+            {
+                Delete();
+            }
         }
         else
         {

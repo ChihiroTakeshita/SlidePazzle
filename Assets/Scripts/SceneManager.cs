@@ -12,7 +12,7 @@ public class SceneManager : MonoBehaviour
 
     public void LoadGame()
     {
-
+        
     }
 
     public void LoadResult()
